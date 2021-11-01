@@ -1,2 +1,2 @@
-const x: string = 'x'
-export {x}
+const x: string = 'x';
+export {x};
