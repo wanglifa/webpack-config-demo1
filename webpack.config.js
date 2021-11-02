@@ -1,5 +1,17 @@
 const ESLintPlugin = require('eslint-webpack-plugin')
 const path = require('path')
+const cssLoaders = (loaders) => [
+  'style-loader',
+  {
+    loader: 'css-loader',
+    options: {
+      modules: {
+        compileType: 'icss',
+      },
+    },
+  },
+  ...loaders,
+]
 module.exports = {
   mode: 'production',
   plugins: [
@@ -16,16 +28,7 @@ module.exports = {
     rules: [
       {
         test: /\.styl(us)?$/i,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                compileType: 'icss',
-              },
-            },
-          },
+        use: cssLoaders([
           {
             loader: 'stylus-loader',
             options: {
@@ -34,20 +37,11 @@ module.exports = {
               }
             },
           }
-        ],
+        ]),
       },
       {
         test: /\.less$/i,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                compileType: 'icss',
-              },
-            },
-          },
+        use: cssLoaders([
           {
             loader: 'less-loader',
             options: {
@@ -56,7 +50,7 @@ module.exports = {
               `,
             },
           }
-        ],
+        ]),
       },
       {
         test: /\.[jt]sx?$/,
@@ -74,16 +68,7 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                compileType: 'icss',
-              },
-            },
-          },
+        use: cssLoaders([
           {
             loader: 'sass-loader',
             options: {
@@ -95,7 +80,7 @@ module.exports = {
               },
             },
           },
-        ],
+        ]),
       },
     ]
   },
