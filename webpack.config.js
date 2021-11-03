@@ -1,10 +1,9 @@
 const ESLintPlugin = require('eslint-webpack-plugin')
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-
+const mode = 'production'
 const cssLoaders = (loaders) => [
-  // 'style-loader',
-  MiniCssExtractPlugin.loader,
+  mode === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
   {
     loader: 'css-loader',
     options: {
@@ -16,7 +15,7 @@ const cssLoaders = (loaders) => [
   ...loaders,
 ]
 module.exports = {
-  mode: 'production',
+  mode,
   plugins: [
     new ESLintPlugin({
       extensions: ['.js', '.jsx', '.ts', '.tsx']
