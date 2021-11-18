@@ -5,6 +5,7 @@ import {TsxDemo} from "./tsx-demo.tsx";
 import './scss-demo.scss'
 import '@/stylus-demo.styl'
 import vars from '@/stylus-vars.styl'
+import React from 'react';
 console.log(vars)
 const b = import('./b') // 动态引入，也按需加载
 console.log(x)
