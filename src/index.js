@@ -6,7 +6,9 @@ import './scss-demo.scss'
 import '@/stylus-demo.styl'
 import vars from '@/stylus-vars.styl'
 import React from 'react';
-console.log(vars)
+import {shared} from "@/share";
+
+console.log(shared)
 const b = import('./b') // 动态引入，也按需加载
 console.log(x)
 console.log(JsxDemo)
